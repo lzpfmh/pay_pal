@@ -1,6 +1,6 @@
 # PayPal
 
-**TODO: Add description**
+**WIP**
 
 ## Installation
 
