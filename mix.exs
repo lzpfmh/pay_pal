@@ -27,6 +27,9 @@ defmodule PayPal.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [
+      {:httpoison, "~> 0.8.0"},
+      {:riakc_common, github: "riakc/riakc_common"}
+    ]
   end
 end
