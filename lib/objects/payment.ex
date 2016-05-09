@@ -1,4 +1,4 @@
-defmodule PayPal.Objects.PaymentResponse do
+defmodule PayPal.Objects.Payment do
   use RiakcCommon.Data.JsonSchema
   use RiakcCommon.Data.JsonCodec
 
@@ -12,6 +12,7 @@ defmodule PayPal.Objects.PaymentResponse do
     field :update_time, :string, default: ""
     field :state, :string, default: ""
     field :links, [PayPal.Objects.Link], default: nil
+    field :experience_profile_id, :string, default: ""
   end
     
 end

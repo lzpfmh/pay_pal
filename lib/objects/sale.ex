@@ -11,6 +11,7 @@ defmodule PayPal.Objects.Sale do
     field :state, :string, default: ""
     field :parent_payment, :string, default: ""
     field :payment_mode, :string, default: ""
+    field :pending_reason, :string, default: ""
     field :reason_code, :string, default: ""
     field :clearing_time, :string, default: ""
     field :transaction_fee, PayPal.Objects.Currency, default: nil
