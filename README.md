@@ -1,15 +1,17 @@
 # PayPal
 
-**WIP**
+This is a simple SDK of PayPal.
+Currently, it's still under heavy developing.
+
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
+the package can be installed as:
 
   1. Add pay_pal to your list of dependencies in `mix.exs`:
 
         def deps do
-          [{:pay_pal, "~> 0.0.1"}]
+          [{:pay_pal,github: "riakc/pay_pal"}]
         end
 
   2. Ensure pay_pal is started before your application:
@@ -18,3 +20,26 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
           [applications: [:pay_pal]]
         end
 
+
+## Status
+
+###Rest API
+
+- Payment
+  - [x] Create 
+  - [x] Excute
+  - [ ] Update
+
+- Sale
+  - [x] Lookup 
+  - [x] Refund
+  
+- Refund
+  - [x] Lookup 
+
+###Webhook
+- Webook
+  - [x] Verify
+  - [ ] Sale Event
+
+  
