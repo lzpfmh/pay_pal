@@ -1,4 +1,4 @@
-defmodule PayPal.Api.Payment do
+defmodule PayPal.Api.PaymentOperation do
   use PayPal.Api.Base
   use RiakcCommon.SimpleRest.Actions.CRUD, except: [:delete],resource: "payment", method: :patch
   alias RiakcCommon.SimpleRest.Utils.API

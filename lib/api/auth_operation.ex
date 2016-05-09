@@ -1,4 +1,4 @@
-defmodule PayPal.Api.Auth do
+defmodule PayPal.Api.AuthOperation do
   use PayPal.Api.Base
   use RiakcCommon.SimpleRest.Actions.CRUD, 
     only: [:create], scope: {"oauth2",:singular},resource: "token"
