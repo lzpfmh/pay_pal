@@ -6,5 +6,5 @@
   "mimerl": {:hex, :mimerl, "1.0.2"},
   "murmur": {:hex, :murmur, "1.0.0"},
   "poison": {:hex, :poison, "2.0.1"},
-  "riakc_common": {:git, "https://github.com/riakc/riakc_common.git", "38c6795ccda3ec1146b368b37d460bf5fa0e68b9", []},
+  "riakc_common": {:git, "https://github.com/riakc/riakc_common.git", "0362d4aef97ed01698dc2348fe03262829900bf2", []},
   "ssl_verify_fun": {:hex, :ssl_verify_fun, "1.1.0"}}
