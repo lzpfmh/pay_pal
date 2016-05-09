@@ -16,7 +16,7 @@ defmodule PayPal do
       Http.handle_response(response,PayPal.Objects.Token)
     end
 
-    API.post(url,data,handler,headers)
+    API.post(url,data,handler,headers,[hackney: hackney])
   end
 
 end
