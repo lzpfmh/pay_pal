@@ -5,14 +5,6 @@ defmodule PayPal.Api.Base do
       require RiakcCommon.SimpleRest.Utils.ApiContext
       require PayPal.Support.Http
 
-      defp headers(token) do
-        [
-          {"Authorization", "Bearer " <> token},
-          {"Accept", "application/json"},
-          {"Content-Type", "application/json"}
-        ]
-      end
-
       defp context(target,module,headers \\ [], opts \\ []) do
         context = RiakcCommon.SimpleRest.Utils.ApiContext.new()
         handler = fn(response) ->
@@ -23,7 +15,7 @@ defmodule PayPal.Api.Base do
       end
 
       def operate_with_token(target,token,restful_operation,opts \\ []) do
-        headers = headers(token)
+        headers = PayPal.Support.Http.headers(token)
         response = __MODULE__.__response__
         context = context(target,response,headers,opts)
         restful_operation.(context)

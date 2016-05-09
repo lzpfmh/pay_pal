@@ -19,4 +19,13 @@ defmodule PayPal.Support.Http do
     end
   end
 
+
+  def headers(token) do
+    [
+      {"Authorization", "Bearer " <> token},
+      {"Accept", "application/json"},
+      {"Content-Type", "application/json"}
+    ]
+  end
+
 end
