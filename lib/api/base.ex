@@ -16,12 +16,12 @@ defmodule PayPal.Api.Base do
           {:ok, %HTTPoison.Response{status_code: code, body: body}} ->
             cond do
               code in 200..299 ->
-                {:ok, map} = Poison.decode(body, as: module.__struct__)
+                {:ok, map} = Poison.decode(body, as: module)
               code == 401 ->
-                {:ok, map} = Poison.decode(body, as: PayPal.Objects.Error.__struct__)
+                {:ok, map} = Poison.decode(body, as: PayPal.Objects.Error)
                 {:auth_error, map}
               true ->
-                {:ok, map} = Poison.decode(body, as: PayPal.Objects.Error.__struct__)
+                {:ok, map} = Poison.decode(body, as: PayPal.Objects.Error)
                 {:api_error, map}
             end
           {:error, %HTTPoison.Error{reason: reason}} ->
