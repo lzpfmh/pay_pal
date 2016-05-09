@@ -11,12 +11,12 @@ defmodule PayPal.Api.Base do
         [{"Accept", "application/json"}, {"Content-Type", "application/x-www-form-urlencoded"}]
       end
 
-      defp handle_response(response) do
+      defp handle_response(response,module) do
         case response do
           {:ok, %HTTPoison.Response{status_code: code, body: body}} ->
             cond do
               code in 200..299 ->
-                {:ok, map} = Poison.decode(body, as: __MODULE__.__struct__)
+                {:ok, map} = Poison.decode(body, as: module.__struct__)
               code == 401 ->
                 {:ok, map} = Poison.decode(body, as: PayPal.Objects.Error.__struct__)
                 {:auth_error, map}
@@ -29,20 +29,24 @@ defmodule PayPal.Api.Base do
         end
       end
 
-      defp context(target,headers \\ [], opts \\ []) do
+      defp context(target,module,headers \\ [], opts \\ []) do
         context = RiakcCommon.SimpleRest.Utils.ApiContext.new()
+        handler = fn(response) ->
+            handle_response(response,module)
+          end
         %{context | target: target, headers: headers, 
-          opts: opts, handler: &handle_response/1 }
+          opts: opts, handler: handler }
       end
 
-      def auth_context(target,opts \\ []) do
+      def auth_context(target,module,opts \\ []) do
         headers = basic_headers()
-        context(target,headers,opts)
+        context(target,module,headers,opts)
       end
-      def api_context(target,headers \\ [], opts \\ []) do
+      
+      def api_context(target,module,headers \\ [], opts \\ []) do
         default = request_headers()
         headers = Enum.concat(default,headers)
-        context(target,headers,opts)
+        context(target,module,headers,opts)
       end
       
     end
