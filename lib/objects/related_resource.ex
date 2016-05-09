@@ -3,7 +3,7 @@ defmodule PayPal.Objects.RelatedResource do
   use RiakcCommon.Data.JsonCodec
 
   json_schema do
-    field :sale, PayPal.Objects.Amount, default: nil
+    field :sale, PayPal.Objects.Sale, default: nil
     field :authorization, :map, default: nil
     field :capture, :map, default: nil
     field :refund, :map, default: nil
