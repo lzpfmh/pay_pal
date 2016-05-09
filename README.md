@@ -1,7 +1,12 @@
 # PayPal
 
+
 This is a simple SDK of PayPal.
 Currently, it's still under heavy developing.
+
+It's a part of platform of [RiakC](https://riakc.com) which is a global payment gateway.
+
+With [RiakC](https://riakc.com), everyone can get a localized payment page and localized payment methods easily.
 
 
 ## Installation
