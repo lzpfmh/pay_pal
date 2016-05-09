@@ -6,7 +6,7 @@ defmodule PayPal.Api.PaymentOperation do
   alias RiakcCommon.SimpleRest.Utils.API
   alias PayPal.Objects.PaymentResponse
   
-  def execuate(target,header,invoice_id,payer_id) do
+  def execute(target,header,invoice_id,payer_id) do
     url = target <> "payments/payment/#{invoice_id}/execute"
     context = api_context(url,PaymentResponse,header)
     data = Poison.encode!(%{payer_id: payer_id})
