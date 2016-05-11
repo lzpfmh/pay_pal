@@ -29,6 +29,7 @@ defmodule PayPal.Mixfile do
   defp deps do
     [
       {:httpoison, "~> 0.8.0"},
+      {:poison,"~> 1.5.2 or ~> 2.0.0"},
       {:riakc_common, github: "riakc/riakc_common"},
       {:ttalk_common, github: "TTalkIM/ttalk_common"}
     ]

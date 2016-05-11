@@ -5,7 +5,7 @@ defmodule PayPal.Objects.Amount do
   json_schema do
     field :currency, :string, default: ""
     field :total, :string, default: ""
-    field :details, [PayPal.Objects.Detail], default: nil
+    field :details, PayPal.Objects.Details, default: nil
   end
     
 end

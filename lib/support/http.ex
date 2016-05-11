@@ -1,4 +1,6 @@
 defmodule PayPal.Support.Http do
+  
+  alias RiakcCommon.Data.JsonCodec
 
   def handle_response(response,module) do
     case response do
@@ -6,12 +8,8 @@ defmodule PayPal.Support.Http do
         cond do
           code in 200..299 ->
             {:ok, map} = Poison.decode(body)
-            struct = 
-            if is_list(map) do
-              Poison.Decode.decode(map,as: [module])
-            else
-              Poison.Decode.decode(map,as: module)
-            end
+            type = JsonCodec.version_type(module)
+            struct =  Poison.Decode.decode(map,as: type)
             {:ok,struct}
           code == 401 ->
             {:ok, map} = Poison.decode(body, as: PayPal.Objects.Error)

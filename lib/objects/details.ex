@@ -1,4 +1,4 @@
-defmodule PayPal.Objects.Detail do
+defmodule PayPal.Objects.Details do
   use RiakcCommon.Data.JsonSchema
   use RiakcCommon.Data.JsonCodec
 
