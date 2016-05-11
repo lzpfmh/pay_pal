@@ -14,7 +14,7 @@ defmodule PayPal.Api.PaymentOperation do
     url = target <> "payments/payment/#{invoice_id}/execute"
     headers = Http.headers(token)
     handler = fn(response) ->
-      Http.handle_response(response, __MODULE__.__response__)
+      Http.handle_response(response, __MODULE__.__response__(:create))
     end
     data = Poison.encode!(%{payer_id: payer_id})
 

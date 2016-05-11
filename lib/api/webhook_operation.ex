@@ -5,6 +5,6 @@ defmodule PayPal.Api.WebhookOperation do
   
   crud_schema do
     response PayPal.Objects.Webhook
-    response PayPal.Objects.WebhookList, [:list]
+    response PayPal.Objects.WebhookList, [:index]
   end
 end
