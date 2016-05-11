@@ -14,25 +14,33 @@ defmodule PayPal.Support.Event do
     transmission_id <> "|" <> timestamp <> "|" <> webhook_id <> "|" <> crc
   end
 
-  defp digest_type(algo) do
-    key = String.downcase(algo)
-    Map.get(@digest_types,key,nil)
+
+  def verify(transmission_id, timestamp, webhook_id, event_body, cert, signature_encoded) do
+
+    msg = signature_msg(transmission_id,timestamp,webhook_id,event_body)
+    {{algorithm,digest_type},public_key} = :ttalk_cert.public_key(cert)
+    {:ok,signature} = Base.decode64(signature_encoded)
+    :crypto.verify(algorithm,digest_type,msg,signature,public_key)
+
   end
 
-  def verify(transmission_id, timestamp, webhook_id, event_body, cert, signature_encoded, algo) do
-    digest_type = digest_type(algo)
-    if nil == digest_type do
-      false
-    else
-      msg = signature_msg(transmission_id,timestamp,webhook_id,event_body)
-      {{algorithm,_},public_key} = :ttalk_cert.public_key(cert)
-      {:ok,signature} = Base.decode64(signature_encoded)
-      :crypto.verify(algorithm,digest_type,msg,signature,public_key)
+
+  def certification(url) do
+    HTTPoison.get(url)
+    |> handle_certification
+  end
+  
+  defp handle_certification(response) do
+    case response do
+      {:ok, %HTTPoison.Response{status_code: code, body: body}} ->
+        cond do
+          code in 200..299 ->
+            {:ok,body}
+          true ->
+            {:error, nil}
+        end
+      {:error, %HTTPoison.Error{reason: reason}} ->
+        {:error, reason}
     end
-
   end
-
-
-
-
 end
