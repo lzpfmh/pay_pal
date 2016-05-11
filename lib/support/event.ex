@@ -1,5 +1,6 @@
 defmodule PayPal.Support.Event do
-
+  require Bitwise
+  
   @digest_types %{
     "md5" => :md5,
     "sha" => :sha,
@@ -8,9 +9,13 @@ defmodule PayPal.Support.Event do
     "sha384" => :sha384,
     "sha512" => :sha512
   }
-  
+
+
   defp signature_msg(transmission_id, timestamp, webhook_id, event_body) do
-    crc = Integer.to_string(:erlang.crc32(event_body))
+    
+    crc =  Bitwise.band(:erlang.crc32(event_body),0xffffffff)
+    crc = Integer.to_string(crc)
+
     transmission_id <> "|" <> timestamp <> "|" <> webhook_id <> "|" <> crc
   end
 
