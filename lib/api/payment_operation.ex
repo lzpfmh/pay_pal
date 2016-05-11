@@ -6,8 +6,10 @@ defmodule PayPal.Api.PaymentOperation do
   alias RiakcCommon.SimpleRest.Utils.API
   alias PayPal.Support.Http
   
-  response PayPal.Objects.Payment
-
+  crud_schema do
+    response PayPal.Objects.Payment
+  end
+  
   def execute(target,token,invoice_id,payer_id) do
     url = target <> "payments/payment/#{invoice_id}/execute"
     headers = Http.headers(token)

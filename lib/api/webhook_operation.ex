@@ -3,6 +3,8 @@ defmodule PayPal.Api.WebhookOperation do
   use RiakcCommon.SimpleRest.Actions.CRUD,
    scope: {"notifications",:singular},resource: "webhooks", method: :patch
   
-  response PayPal.Objects.Webhook
-
+  crud_schema do
+    response PayPal.Objects.Webhook
+    response PayPal.Objects.WebhookList, [:list]
+  end
 end

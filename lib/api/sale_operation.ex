@@ -3,8 +3,10 @@ defmodule PayPal.Api.SaleOperation do
   use RiakcCommon.SimpleRest.Actions.CRUD, only: [:show],
    scope: {"payments",:singular},resource: "sale", method: :patch
   
-  response PayPal.Objects.Sale
-
+  crud_schema do
+    response PayPal.Objects.Sale
+  end
+  
   alias RiakcCommon.SimpleRest.Utils.API
   alias PayPal.Support.Http
   

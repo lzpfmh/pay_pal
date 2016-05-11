@@ -14,13 +14,13 @@ defmodule PayPal.Api.Base do
           opts: opts, handler: handler }
       end
 
-      def operate_with_token(target,token,restful_operation,opts \\ []) do
+      def operate_with_token(target,token,{action,operation},opts \\ []) do
         headers = PayPal.Support.Http.headers(token)
-        response = __MODULE__.__response__
+        response = __MODULE__.__response__(action)
         context = context(target,response,headers,opts)
-        restful_operation.(context)
+        operation.(context)
       end
-      
+
     end
   end
 
