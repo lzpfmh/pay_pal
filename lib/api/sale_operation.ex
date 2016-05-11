@@ -12,7 +12,7 @@ defmodule PayPal.Api.SaleOperation do
   
   def refund(target,token,sale_id,amount) do
     
-    url = target <> "payments/payment/#{sale_id}/execute"
+    url = target <> "payments/sale/#{sale_id}/refund"
     headers = Http.headers(token)
     handler = fn(response) ->
       Http.handle_response(response,PayPal.Objects.Refund)

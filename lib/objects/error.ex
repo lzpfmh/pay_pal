@@ -7,6 +7,7 @@ defmodule PayPal.Objects.Error do
     field :message, :string, default: ""
     field :information_link, :string, default: ""
     field :details, :string, default: ""
+    field :debug_id, :string, default: ""
   end
     
 end
