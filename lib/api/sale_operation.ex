@@ -18,7 +18,7 @@ defmodule PayPal.Api.SaleOperation do
       Http.handle_response(response,PayPal.Objects.Refund)
     end
     
-    amount = %PayPal.Objects.Amount{amount: amount,currency: currency}
+    amount = %PayPal.Objects.Amount{ total: amount,currency: currency}
     data = %{"amount" => amount}
 
     json = Poison.encode!(data)
