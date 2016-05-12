@@ -10,16 +10,19 @@ defmodule PayPal.Api.SaleOperation do
   alias RiakcCommon.SimpleRest.Utils.API
   alias PayPal.Support.Http
   
-  def refund(target,token,sale_id,amount) do
+  def refund(target,token,sale_id,amount,currency) do
     
     url = target <> "payments/sale/#{sale_id}/refund"
     headers = Http.headers(token)
     handler = fn(response) ->
       Http.handle_response(response,PayPal.Objects.Refund)
     end
-    data = Poison.encode!(amount)
+    
+    amount = %PayPal.Objects.Amount{amount: amount,currency: currency}
+    data = %{"amount" => amount}
 
-    API.post(url,data,handler,headers)
+    json = Poison.encode!(data)
+    API.post(url,json,handler,headers)
   end
 
 end
