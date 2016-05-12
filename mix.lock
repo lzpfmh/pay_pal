@@ -1,0 +1,11 @@
+%{"certifi": {:hex, :certifi, "0.4.0"},
+  "hackney": {:hex, :hackney, "1.6.0"},
+  "httpoison": {:hex, :httpoison, "0.8.3"},
+  "idna": {:hex, :idna, "1.2.0"},
+  "metrics": {:hex, :metrics, "1.0.1"},
+  "mimerl": {:hex, :mimerl, "1.0.2"},
+  "murmur": {:hex, :murmur, "1.0.0"},
+  "poison": {:hex, :poison, "2.0.1"},
+  "riakc_common": {:git, "https://github.com/riakc/riakc_common.git", "09b6ffab0c2cf0710c5c57643f573e778def4bfa", []},
+  "ssl_verify_fun": {:hex, :ssl_verify_fun, "1.1.0"},
+  "ttalk_common": {:git, "https://github.com/TTalkIM/ttalk_common.git", "388a83783555494a33b1f4ff2672c2539da2a6d9", []}}

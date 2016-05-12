@@ -28,6 +28,13 @@ the package can be installed as:
 
 ## Status
 
+###Version
+
+	Elixir >= 1.2.5
+	Poison ~> 1.5.2 or ~ 2.0.1
+	HttPoison ~> 0.8.3
+
+
 ###Rest API
 
 - Payment
@@ -53,5 +60,3 @@ the package can be installed as:
 - Webook
   - [x] Verify
   - [ ] Sale Event
-
-  
