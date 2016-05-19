@@ -18,6 +18,7 @@ defmodule PayPal.Support.Constants do
   define state_pending,"pending"
   define state_in_progress,"in_progress"
   define state_completed, "completed"
+  define state_refunded,"refunded"
   define state_partially_refunded,"partially_refunded"
 
 
