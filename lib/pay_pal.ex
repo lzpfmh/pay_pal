@@ -2,7 +2,7 @@ defmodule PayPal do
   
   alias RiakcCommon.SimpleRest.Utils.API
   alias PayPal.Support.Http
-
+  
   use PayPal.Support.Constants, as: C
 
   def authentication(target,client_id,secret) do

@@ -12,6 +12,7 @@ defmodule PayPal.Support.Constants do
   define state_created,"created"
   define state_approved,"approved"
   define state_failed,"failed"
+  define state_denied,"denied"
   define state_canceled,"canceled"
   define state_expired,"expired"
   define state_pending,"pending"
