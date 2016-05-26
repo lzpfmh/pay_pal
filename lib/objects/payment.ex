@@ -6,7 +6,7 @@ defmodule PayPal.Objects.Payment do
     field :intent, :string, default: ""
     field :payer, PayPal.Objects.Payer, default: nil
     field :transactions, [PayPal.Objects.Transaction], default: nil
-    field :redirect_urls, [PayPal.Objects.RedirectUrls], default: nil
+    field :redirect_urls, PayPal.Objects.RedirectUrls, default: nil
     field :id, :string, default: ""
     field :create_time, :string, default: ""
     field :update_time, :string, default: ""
